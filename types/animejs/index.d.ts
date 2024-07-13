@@ -4,39 +4,24 @@ type CustomEasingFunction = (el: HTMLElement, index: number, length: number) => 
 // Allowing null is necessary because DOM queries may not return anything.
 type AnimeTarget = string | object | HTMLElement | SVGElement | NodeList | null;
 
+// Internal types for harnessing the power of template literals
+type _EasingNames =
+    | "Quad"
+    | "Cubic"
+    | "Quart"
+    | "Quint"
+    | "Sine"
+    | "Expo"
+    | "Circ"
+    | "Back"
+    | "Elastic"
+    | "Bounce"
+type _EasingDirectons = "In" | "Out" | "InOut"
+
 declare namespace anime {
     type EasingOptions =
         | "linear"
-        | "easeInQuad"
-        | "easeInCubic"
-        | "easeInQuart"
-        | "easeInQuint"
-        | "easeInSine"
-        | "easeInExpo"
-        | "easeInCirc"
-        | "easeInBack"
-        | "easeInElastic"
-        | "easeInBounce"
-        | "easeOutQuad"
-        | "easeOutCubic"
-        | "easeOutQuart"
-        | "easeOutQuint"
-        | "easeOutSine"
-        | "easeOutExpo"
-        | "easeOutCirc"
-        | "easeOutBack"
-        | "easeOutElastic"
-        | "easeOutBounce"
-        | "easeInOutQuad"
-        | "easeInOutCubic"
-        | "easeInOutQuart"
-        | "easeInOutQuint"
-        | "easeInOutSine"
-        | "easeInOutExpo"
-        | "easeInOutCirc"
-        | "easeInOutBack"
-        | "easeInOutElastic"
-        | "easeInOutBounce";
+        | `ease${_EasingDirectons}${_EasingNames}`;
     type DirectionOptions = "reverse" | "alternate" | "normal";
 
     interface AnimeCallBack {
