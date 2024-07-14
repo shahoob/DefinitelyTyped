@@ -107,11 +107,11 @@ declare namespace anime {
     }
 
     interface AnimeTimelineAnimParams extends AnimeAnimParams {
-        timelineOffset: number | string | FunctionBasedParameter;
+        timelineOffset: number | `${"-" | "+"}=${number}` | FunctionBasedParameter;
     }
 
     interface AnimeTimelineInstance extends AnimeInstance {
-        add(params: AnimeAnimParams, timelineOffset?: string | number): AnimeTimelineInstance;
+        add(params: AnimeAnimParams, timelineOffset?: `${"-" | "+"}=${number}` | number): AnimeTimelineInstance;
     }
 
     interface StaggerOptions {
