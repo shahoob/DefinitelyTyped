@@ -21,7 +21,11 @@ type _EasingDirectons = "In" | "Out" | "InOut"
 declare namespace anime {
     type EasingOptions =
         | "linear"
-        | `ease${_EasingDirectons}${_EasingNames}`;
+        | `ease${_EasingDirectons}${_EasingNames}`
+        | `cubicBezier(${number}, ${number}, ${number}, ${number})`
+        | `spring(${number}, ${number}, ${number}, ${number})`
+        | `ease${_EasingDirectons}Elastic(${number}, ${number})`
+        | `steps(${number})`;
     type DirectionOptions = "reverse" | "alternate" | "normal";
 
     interface AnimeCallBack {
@@ -49,7 +53,7 @@ declare namespace anime {
         endDelay?: number | FunctionBasedParameter | undefined;
         elasticity?: number | FunctionBasedParameter | undefined;
         round?: number | boolean | FunctionBasedParameter | undefined;
-        keyframes?: readonly AnimeAnimParams[] | undefined;
+        keyframes?: ReadonlyArray<Omit<AnimeAnimParams, 'AnyAnimatedProperty'>> | undefined;
 
         easing?: EasingOptions | string | CustomEasingFunction | ((el: HTMLElement) => string) | undefined;
 
@@ -118,7 +122,7 @@ declare namespace anime {
         start?: number | string | undefined;
         direction?: "normal" | "reverse" | undefined;
         easing?: CustomEasingFunction | string | EasingOptions | undefined;
-        grid?: readonly number[] | undefined;
+        grid?: readonly [number, number] | undefined;
         axis?: "x" | "y" | undefined;
         from?: "first" | "last" | "center" | number | undefined;
     }

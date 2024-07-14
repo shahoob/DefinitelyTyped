@@ -62,7 +62,7 @@ tl.finished.then(() => {
 const usesEnums = anime({
     targets: ".usingEnumsIsAReallyHandyThing",
     direction: "reverse",
-    easing: "inoutexpo",
+    easing: "easeInOutExpo",
     someProperty: "+=4000",
 });
 
